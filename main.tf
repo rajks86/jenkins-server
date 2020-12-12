@@ -14,7 +14,7 @@ provider "aws" {
 
 # EC2 security group
 resource "aws_security_group" "web-sg" {
-  name = "web-sg"  
+  name   = "web-sg"
   vpc_id = var.vpc_id
 
   # Allow ssh and standard http/https ports inbound
@@ -31,11 +31,11 @@ resource "aws_security_group" "web-sg" {
 
   # Access to Internet for instance
   egress {
-    cidr_blocks = [ "0.0.0.0/0" ]
+    cidr_blocks = ["0.0.0.0/0"]
     description = "egress"
-    from_port = 0
-    protocol = "-1"
-    to_port = 0
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
   }
 
   tags = {
@@ -46,15 +46,15 @@ resource "aws_security_group" "web-sg" {
 
 # Jenkins-Server
 resource "aws_instance" "jenkins-server" {
-   ami             = var.ami
-   instance_type   = "t2.medium"
-   security_groups = [ "${aws_security_group.web-sg.name}" ]
+  ami             = var.ami
+  instance_type   = "t2.medium"
+  security_groups = [aws_security_group.web-sg.name]
 
-   key_name = "devsecops"
+  key_name = "devsecops"
 
-   user_data = file("user-data.sh")
+  user_data = file("user-data.sh")
 
-   tags = {
-     "Name" = "Jenkins-Server"
-   }
+  tags = {
+    "Name" = "Jenkins-Server"
+  }
 }

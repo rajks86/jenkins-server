@@ -1,16 +1,16 @@
 variable "ami" {
   description = "AMI"
-  default = "ami-0a4a70bd98c6d6441"
+  default     = "ami-0a4a70bd98c6d6441"
 }
 
 variable "vpc_id" {
   description = "VPC"
-  default = "vpc-e0a09b88"
+  default     = "vpc-e0a09b88"
 }
 
 variable "subnet_id" {
   description = "Subnet"
-  default = "subnet-25cbeb4d"
+  default     = "subnet-25cbeb4d"
 }
 
 variable "availability_zone_id" {
@@ -20,7 +20,7 @@ variable "availability_zone_id" {
 
 variable "region" {
   description = "region"
-  default = "ap-south-1"
+  default     = "ap-south-1"
 }
 
 variable "ingressrules" {
